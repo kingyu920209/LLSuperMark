@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>title</key>
+	<string>德国进口酸奶</string>
+	<key>price</key>
+	<string>¥34.2</string>
+	<key>oprice</key>
+	<string>¥56.4</string>
+	<key>brand</key>
+	<string>加多宝</string>
+	<key>specification</key>
+	<string>1.8kg/包</string>
+	<key>shelfLife</key>
+	<string>30天</string>
+</dict>
+</plist>

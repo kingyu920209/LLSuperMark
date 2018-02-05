@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-
+#import "WDTabBarController.h"
 @interface AppDelegate ()
 
 @end
@@ -16,6 +16,19 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    [[GHConsole sharedConsole]startPrintLog];
+
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    
+    self.window.rootViewController = [[WDTabBarController alloc] init];
+    
+    [self.window makeKeyAndVisible];
+//    if (@available(ios 11.0,*)) {
+//        UIScrollView.appearance.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
+//        UITableView.appearance.estimatedRowHeight = 0;
+//        UITableView.appearance.estimatedSectionFooterHeight = 0;
+//        UITableView.appearance.estimatedSectionHeaderHeight = 0;
+//    }
     // Override point for customization after application launch.
     return YES;
 }

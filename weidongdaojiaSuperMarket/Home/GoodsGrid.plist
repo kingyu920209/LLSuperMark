@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>iconImage</key>
+		<string>https://ss3.baidu.com/9fo3dSag_xI4khGko9WTAnF6hhy/zhidao/pic/item/91529822720e0cf3955483e00c46f21fbe09aa0e.jpg</string>
+		<key>gridTitle</key>
+		<string>新品上市</string>
+		<key>gridTag</key>
+		<string></string>
+		<key>gridColor</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>iconImage</key>
+		<string>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b10000_10000&amp;sec=1515485052&amp;di=73ebb652da8b2ffd470da1c01c88b461&amp;src=http://imgsrc.baidu.com/forum/pic/item/0e2442a7d933c89594cc083ad11373f0830200c4.jpg</string>
+		<key>gridTitle</key>
+		<string>限时抢购</string>
+		<key>gridTag</key>
+		<string></string>
+		<key>gridColor</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>iconImage</key>
+		<string>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1515495122121&amp;di=4a3883bba1e283bfbef5c595ba566db6&amp;imgtype=0&amp;src=http%3A%2F%2Fwww.chinanews.com%2Fcul%2F2012%2F09-04%2FU397P4T8D4155797F107DT20120904093811.jpg</string>
+		<key>gridTitle</key>
+		<string>特惠商品</string>
+		<key>gridTag</key>
+		<string></string>
+		<key>gridColor</key>
+		<string></string>
+	</dict>
+	<dict>
+		<key>iconImage</key>
+		<string>https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1515495091271&amp;di=cb24a4444beedcc71e17480f4c8384cc&amp;imgtype=0&amp;src=http%3A%2F%2Ff2.topitme.com%2F2%2Feb%2F7b%2F1120932650d8a7beb2o.jpg</string>
+		<key>gridTitle</key>
+		<string>精品推荐</string>
+		<key>gridTag</key>
+		<string></string>
+		<key>gridColor</key>
+		<string></string>
+	</dict>
+</array>
+</plist>

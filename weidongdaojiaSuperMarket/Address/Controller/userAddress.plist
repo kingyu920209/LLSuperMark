@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<dict>
+		<key>address</key>
+		<string>北京市通州区土桥</string>
+		<key>name</key>
+		<string>搜索</string>
+		<key>phone</key>
+		<string>78974444</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>北京市通州区土桥还好</string>
+		<key>name</key>
+		<string>搜索较劲</string>
+		<key>phone</key>
+		<string>78979894444</string>
+	</dict>
+	<dict>
+		<key>address</key>
+		<string>北京市通州区土桥看看看</string>
+		<key>name</key>
+		<string>搜索机会</string>
+		<key>phone</key>
+		<string>789744449999</string>
+	</dict>
+</array>
+</plist>
