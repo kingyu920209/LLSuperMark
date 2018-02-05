@@ -9,5 +9,5 @@
 #import "WDRootVC.h"
 
 @interface GoodsDetailVC : WDRootVC
-
+@property(nonatomic,copy)NSString * orderID;
 @end

@@ -7,7 +7,8 @@
 //
 
 #import "WDGoodsOtherCell.h"
-#import "WDGoodsOtherItem.h"
+
+#import "GoodsActiveItem.h"
 @interface WDGoodsOtherCell ()
 
 /* 图片 */
@@ -40,7 +41,7 @@
 
 - (void)setUpUI
 {
-    self.num =0;
+//    self.num =0;
     self.goodsImageView = [[UIImageView alloc] init];
 //    self.goodsImageView.contentMode = UIViewContentModeScaleAspectFill;
     [self addSubview:self.goodsImageView];
@@ -91,6 +92,7 @@
             self.numLable.hidden=NO;
             self.opriceLabel.hidden = YES;
         }
+        self.addNumBlock([NSString stringWithFormat:@"%ld",(long)self.num]);
         return [RACSignal empty];
     }];
     self.reduceButton.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
@@ -101,6 +103,8 @@
             self.numLable.hidden=YES;
             self.opriceLabel.hidden = NO;
         }
+        self.reduceNumBlock([NSString stringWithFormat:@"%ld",(long)self.num]);
+
         return [RACSignal empty];
     }];
     
@@ -155,20 +159,36 @@
         make.height.equalTo(@20);
     }];
 }
--(void)setOtherItem:(WDGoodsOtherItemDetail *)otherItem{
+-(void)setOtherItem:(GoodsActiveItem *)otherItem{
     _otherItem = otherItem;
+    self.num = [otherItem.goodsNum integerValue];
     [self.goodsImageView sd_setImageWithURL:[NSURL URLWithString:otherItem.iconImage]placeholderImage:[UIImage imageNamed:@"default_49_11"]];
 
     self.titleLabel.text = otherItem.title;
 
-    NSUInteger length = [otherItem.oprice length];
+    NSUInteger length = [otherItem.oprice length]+1;
 
-    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:otherItem.oprice];
+    NSMutableAttributedString *attri = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"¥%@",otherItem.oprice]];
     [attri addAttribute:NSStrikethroughStyleAttributeName value:@(NSUnderlinePatternSolid | NSUnderlineStyleSingle) range:NSMakeRange(0, length)];
     [attri addAttribute:NSStrikethroughColorAttributeName value:[UIColor getColor:@"9e9e9e"] range:NSMakeRange(0, length)];
     [self.opriceLabel setAttributedText:attri];
 
-    self.priceLabel.text = otherItem.price;
+    self.priceLabel.text = [NSString stringWithFormat:@"¥%@",otherItem.price];
+    NSMutableAttributedString * priceAttributed = [[NSMutableAttributedString alloc] initWithString:self.priceLabel.text];
+    NSRange priceRange = [[priceAttributed string]rangeOfString:@"¥"];
+    [priceAttributed addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:13] range:priceRange];
+    self.priceLabel.attributedText = priceAttributed;
+    self.numLable.text =[NSString stringWithFormat:@"%@",otherItem.goodsNum];
+
+    if ([otherItem.goodsNum integerValue]>0) {
+        self.reduceButton.hidden=NO;
+        self.numLable.hidden=NO;
+        self.opriceLabel.hidden = YES;
+    }else{
+        self.reduceButton.hidden=YES;
+        self.numLable.hidden=YES;
+        self.opriceLabel.hidden = NO;
+    }
 //    LLog(@"%@",otherItem.price);
 }
 @end

@@ -17,7 +17,7 @@
 #import "AppDelegate.h"
 #import "WDTabBarController.h"
 #import "GoodsDetailWebCell.h"
-
+#import "GoodsActiveItem.h"
 static NSString * const GoodsDetailSlidesCellID = @"GoodsDetailSlidesCell";
 static NSString * const GoodsDetailInfoCellID = @"GoodsDetailInfoCellID";
 static NSString * const GoodsDetailTitleCellID = @"GoodsDetailTitleCellID";
@@ -29,6 +29,7 @@ static NSString * const GoodsDetailWebCellID = @"GoodsDetailWebCellID";
 @property (nonatomic,strong)GoodsDetailModel *model;
 @property (nonatomic,strong)DetailShopCarToolView * toolView;
 @property (nonatomic,assign)CGFloat webHeight;
+@property (nonatomic,strong)JQFMDB * db;
 @end
 
 @implementation GoodsDetailVC
@@ -57,6 +58,7 @@ static NSString * const GoodsDetailWebCellID = @"GoodsDetailWebCellID";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.webHeight= 300;
+    self.db = [JQFMDB shareDatabase:@"shopCarGoods.sqlite"];
 
     self.view.backgroundColor = [UIColor whiteColor];
     self.model = [GoodsDetailModel mj_objectWithFilename:@"GoodsDetail.plist"];
@@ -91,8 +93,16 @@ static NSString * const GoodsDetailWebCellID = @"GoodsDetailWebCellID";
 }
 -(void)addShopCarToolView{
     self.toolView = [[DetailShopCarToolView alloc] init];
-    self.toolView.goodsNum = @"2";
-    self.toolView.goodsPrice = @"34.2";
+
+    NSMutableArray *personArr = [[self.db jq_lookupTable:@"shopCarGoods" dicOrModel:[GoodsActiveItem class] whereFormat:nil] mutableCopy];
+    float totalMoney = 0.00;
+    for (int a=0; a<personArr.count; a++) {
+        GoodsActiveItem * model = personArr[a];
+        totalMoney +=([model.price floatValue]*[model.goodsNum integerValue]);
+    }
+    
+    self.toolView.goodsPrice = [NSString stringWithFormat:@"%.2f",totalMoney];
+    self.toolView.goodsNum =[NSString stringWithFormat:@"%d",[self.db jq_tableItemCount:@"shopCarGoods"]];
     self.toolView.frame = CGRectMake(0, KScreenHeight-51, KScreenWidth, 51);
     [self.view addSubview:self.toolView];
     self.toolView.goShopBlock = ^{

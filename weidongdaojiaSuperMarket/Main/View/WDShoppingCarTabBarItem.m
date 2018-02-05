@@ -10,7 +10,6 @@
 @interface WDShoppingCarTabBarItem ()
 @property (strong, nonatomic) UIImageView *spotImageView;
 @property (assign, nonatomic) BOOL tmpFlag;
-@property (nonatomic,strong)UILabel *numLabel;
 
 @end
 @implementation WDShoppingCarTabBarItem

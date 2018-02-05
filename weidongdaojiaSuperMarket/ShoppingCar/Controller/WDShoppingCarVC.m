@@ -44,9 +44,9 @@ static NSString *const ShoppingCarCellID = @"ShoppingCarCellID";
         }
         
     }
-    if ([self.db jq_tableItemCount:@"shopCarGoods"]!=0) {
+    
         SetTabBarItemBadge([self.db jq_tableItemCount:@"shopCarGoods"]);
-    }
+    
     self.toolView.selectNum = [NSString stringWithFormat:@"%ld",(long)goodsNum];
     self.toolView.totalMoney = [NSString stringWithFormat:@"%.2f",totalMoney];
 }
@@ -223,7 +223,8 @@ static NSString *const ShoppingCarCellID = @"ShoppingCarCellID";
             [self.db jq_deleteTable:@"shopCarGoods" whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",item.orderID]];
             [weakSelf.personArr removeObject:item];
             [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-            
+            SetTabBarItemBadge([self.db jq_tableItemCount:@"shopCarGoods"]);
+
         }else{
             
             [self.db jq_updateTable:@"shopCarGoods" dicOrModel:item whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",item.orderID]];

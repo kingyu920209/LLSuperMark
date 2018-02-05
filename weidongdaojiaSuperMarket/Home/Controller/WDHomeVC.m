@@ -35,9 +35,8 @@
 
 @property (strong , nonatomic)NSMutableArray<WDGridItem *> *gridItem;
 
-@property (strong , nonatomic)NSMutableArray<WDGoodsOtherItem *> *otherItem;
+@property (strong , nonatomic)NSMutableArray<GoodsActiveItem *> *otherItem;
 
-@property (strong , nonatomic)NSMutableArray<WDGoodsOtherItemDetail *> *otherDetailItem;
 
 @property (strong , nonatomic)NSArray *headerArray;
 
@@ -82,7 +81,7 @@ static NSString *const WDOtherHeadViewID = @"WDOtherHeadView";
         SetTabBarItemBadge([self.db jq_tableItemCount:@"shopCarGoods"]);
     }
     _gridItem = [WDGridItem mj_objectArrayWithFilename:@"GoodsGrid.plist"];
-    _otherItem = [WDGoodsOtherItemDetail mj_objectArrayWithFilename:@"GoodsOthe.plist"];
+    _otherItem = [GoodsActiveItem mj_objectArrayWithFilename:@"GoodsOthe.plist"];
 
     self.headerArray = @[@"sy_41",@"sy_43"];
     
@@ -188,13 +187,54 @@ static NSString *const WDOtherHeadViewID = @"WDOtherHeadView";
         
     }else{
         WDGoodsOtherCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:WDGoodsOtherCellID forIndexPath:indexPath];
-        cell.otherItem = _otherItem[indexPath.row];
+        GoodsActiveItem * model =_otherItem[indexPath.row];;
+        NSArray *count = [self.db jq_lookupTable:@"shopCarGoods" dicOrModel:[GoodsActiveItem class] whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+        if (count.count!=0) {
+            GoodsActiveItem * numModel =[count firstObject];
+            model.goodsNum = numModel.goodsNum;
+        }else{
+            model.goodsNum = @"0";
+        }
+        cell.otherItem =model;
+
+        cell.reduceNumBlock = ^(NSString *num) {
+            model.goodsNum = num;
+            
+            if ([model.goodsNum integerValue]==0) {
+                [self.db jq_deleteTable:@"shopCarGoods" whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];                
+                    SetTabBarItemBadge([self.db jq_tableItemCount:@"shopCarGoods"]);
+            }else{
+                [self.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+            }
+
+        };
+        cell.addNumBlock = ^(NSString *num) {
+            model.goodsNum = num;
+            NSArray *count = [self.db jq_lookupTable:@"shopCarGoods" dicOrModel:[GoodsActiveItem class] whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+            if (count.count==0) {
+                model.goodsSelect = YES;
+                [self.db jq_insertTable:@"shopCarGoods" dicOrModel:model];
+                SetTabBarItemBadge([self.db jq_tableItemCount:@"shopCarGoods"]);
+
+            }else{
+                [self.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+            }
+        };
         gridcell = cell;
 
     }
     
     
     return gridcell;
+}
+-(UIEdgeInsets)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout *)collectionViewLayout insetForSectionAtIndex:(NSInteger)section
+{
+    if (section==0||section==1) {
+        return UIEdgeInsetsMake(0, 0, 0, 0 );
+    }
+    
+        return UIEdgeInsetsMake(0, 5, 0, 5);//分别为上、左、下、右
+    
 }
 #pragma mark - item宽高
 
@@ -206,7 +246,7 @@ static NSString *const WDOtherHeadViewID = @"WDOtherHeadView";
         return CGSizeMake(KScreenWidth, 120);
 
     }
-    return CGSizeMake(KScreenWidth/3, 210);
+    return CGSizeMake((KScreenWidth-(5*4))/3, 210);
 
 }
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

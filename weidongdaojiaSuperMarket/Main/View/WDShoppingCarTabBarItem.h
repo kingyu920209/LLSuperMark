@@ -10,4 +10,6 @@
 
 @interface WDShoppingCarTabBarItem : WDAnimTabBarItem
 @property(nonatomic,strong)NSString * barNum;
+@property (nonatomic,strong)UILabel *numLabel;
+
 @end

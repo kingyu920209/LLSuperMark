@@ -19,7 +19,12 @@ static WDShoppingCarTabBarItem *_shopTabBarItem;
 
 void SetTabBarItemBadge(NSInteger badge)
 {
-    _shopTabBarItem.barNum = [NSString stringWithFormat:@"%ld",(long)badge];
+    if (badge==0) {
+        _shopTabBarItem.numLabel.hidden = YES;
+    }else{
+        _shopTabBarItem.numLabel.hidden = NO;
+        _shopTabBarItem.barNum = [NSString stringWithFormat:@"%ld",(long)badge];
+    }
 }
 @interface WDTabBarController ()<UITabBarControllerDelegate>
 @property (strong, nonatomic) NSMutableArray *tabBarItemList;

@@ -269,6 +269,8 @@ static NSString *const CategoryGoodsCellID = @"CategoryGoodsCell";
             
             if ([model.goodsNum integerValue]==0) {
             [self.db jq_deleteTable:@"shopCarGoods" whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+                SetTabBarItemBadge([self.db jq_tableItemCount:@"shopCarGoods"]);
+
             }else{
                 [self.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
             }
@@ -281,6 +283,8 @@ static NSString *const CategoryGoodsCellID = @"CategoryGoodsCell";
             if (count.count==0) {
                 model.goodsSelect = YES;
                 [self.db jq_insertTable:@"shopCarGoods" dicOrModel:model];
+                SetTabBarItemBadge([self.db jq_tableItemCount:@"shopCarGoods"]);
+
             }else{
                 [self.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
             }

@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-@class WDGoodsOtherItemDetail;
+typedef void (^ReduceNumBlock)(NSString * num);
+typedef void (^AddNumBlock)(NSString * num);
 
+@class GoodsActiveItem;
 @interface WDGoodsOtherCell : UICollectionViewCell
-@property (strong , nonatomic)WDGoodsOtherItemDetail *otherItem;
-
+@property (strong , nonatomic)GoodsActiveItem *otherItem;
+@property(nonatomic,copy)ReduceNumBlock reduceNumBlock;
+@property(nonatomic,copy)AddNumBlock addNumBlock;
 @end
