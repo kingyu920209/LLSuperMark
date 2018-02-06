@@ -29,6 +29,7 @@
 		0C1530FC2022B999000DB048 /* NewPhoneAndNameCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1530FB2022B999000DB048 /* NewPhoneAndNameCell.m */; };
 		0C1531022022ED24000DB048 /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1531002022ED24000DB048 /* AddressPickerView.m */; };
 		0C1531032022ED24000DB048 /* Addresscity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C1531012022ED24000DB048 /* Addresscity.plist */; };
+		0C153106202954FA000DB048 /* UIControl+ButtonCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C153105202954FA000DB048 /* UIControl+ButtonCon.m */; };
 		0CC597DB200359AD003F6F46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC597DA200359AD003F6F46 /* AppDelegate.m */; };
 		0CC597DE200359AD003F6F46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC597DD200359AD003F6F46 /* ViewController.m */; };
 		0CC597E1200359AD003F6F46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC597DF200359AD003F6F46 /* Main.storyboard */; };
@@ -153,6 +154,8 @@
 		0C1530FF2022ED24000DB048 /* AddressPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddressPickerView.h; sourceTree = "<group>"; };
 		0C1531002022ED24000DB048 /* AddressPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddressPickerView.m; sourceTree = "<group>"; };
 		0C1531012022ED24000DB048 /* Addresscity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Addresscity.plist; sourceTree = "<group>"; };
+		0C153104202954FA000DB048 /* UIControl+ButtonCon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ButtonCon.h"; sourceTree = "<group>"; };
+		0C153105202954FA000DB048 /* UIControl+ButtonCon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ButtonCon.m"; sourceTree = "<group>"; };
 		0CC597D6200359AD003F6F46 /* weidongdaojiaSuperMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weidongdaojiaSuperMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC597D9200359AD003F6F46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0CC597DA200359AD003F6F46 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -771,6 +774,8 @@
 				0CC598602004A52F003F6F46 /* UIView+WDRolling.m */,
 				0CC598622004A5F6003F6F46 /* UIColor+WDColorS.h */,
 				0CC598632004A5F6003F6F46 /* UIColor+WDColorS.m */,
+				0C153104202954FA000DB048 /* UIControl+ButtonCon.h */,
+				0C153105202954FA000DB048 /* UIControl+ButtonCon.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -1234,6 +1239,7 @@
 				0C1530DF20218D90000DB048 /* SearchAddressView.m in Sources */,
 				0CF0CC64200DF06300BB1DF4 /* GoodsActiveCell.m in Sources */,
 				0CD659A3201ADD210065D477 /* GoodsDetailSlidesCell.m in Sources */,
+				0C153106202954FA000DB048 /* UIControl+ButtonCon.m in Sources */,
 				0CC59837200366C6003F6F46 /* WDShoppingCarVC.m in Sources */,
 				0CD659B9201EF41E0065D477 /* ShoppingCarToolView.m in Sources */,
 				0C1530F62022B977000DB048 /* NewAddressCell.m in Sources */,
