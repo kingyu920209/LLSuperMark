@@ -29,7 +29,14 @@
 static NSString * const GoodsActiveCellID = @"GoodsActiveCell";
 
 @implementation WDGoodsActiveVC
-
+-(void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+//    [self.db close];
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+    
+}
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.db = [JQFMDB shareDatabase:@"shopCarGoods.sqlite"];
@@ -69,12 +76,13 @@ static NSString * const GoodsActiveCellID = @"GoodsActiveCell";
 
     toolView.goodsPrice = [NSString stringWithFormat:@"%.2f",totalMoney];
     toolView.goodsNum =[NSString stringWithFormat:@"%d",[self.db jq_tableItemCount:@"shopCarGoods"]];
+    kWeakSelf(weakSelf);
     toolView.goShopBlock = ^{
         
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         WDTabBarController *tab = (WDTabBarController *)delegate.window.rootViewController;
         tab.selectedIndex = 2;
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         
     };
     self.toolView = toolView;
@@ -121,17 +129,17 @@ static NSString * const GoodsActiveCellID = @"GoodsActiveCell";
         model.goodsNum = @"0";
     }
     [cell setModel:model];
-    
+    kWeakSelf(weakSelf);
     cell.reduceNumBlock = ^(NSString *num) {
         model.goodsNum = num;
-        self.toolView.goodsPrice = [NSString stringWithFormat:@"%.2f",[self.toolView.goodsPrice floatValue]-[model.price floatValue]];
+        weakSelf.toolView.goodsPrice = [NSString stringWithFormat:@"%.2f",[weakSelf.toolView.goodsPrice floatValue]-[model.price floatValue]];
 
         if ([model.goodsNum integerValue]==0) {
-            [self.db jq_deleteTable:@"shopCarGoods" whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
-            self.toolView.goodsNum =[NSString stringWithFormat:@"%d",[self.db jq_tableItemCount:@"shopCarGoods"]];
+            [weakSelf.db jq_deleteTable:@"shopCarGoods" whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+            weakSelf.toolView.goodsNum =[NSString stringWithFormat:@"%d",[weakSelf.db jq_tableItemCount:@"shopCarGoods"]];
 
         }else{
-            [self.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+            [weakSelf.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
         }
 
     };
@@ -139,15 +147,15 @@ static NSString * const GoodsActiveCellID = @"GoodsActiveCell";
 
     cell.addNumBlock = ^(NSString *num){
         model.goodsNum = num;
-        self.toolView.goodsPrice = [NSString stringWithFormat:@"%.2f",[self.toolView.goodsPrice floatValue]+[model.price floatValue]];
-        NSArray *count = [self.db jq_lookupTable:@"shopCarGoods" dicOrModel:[GoodsActiveItem class] whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+        weakSelf.toolView.goodsPrice = [NSString stringWithFormat:@"%.2f",[weakSelf.toolView.goodsPrice floatValue]+[model.price floatValue]];
+        NSArray *count = [weakSelf.db jq_lookupTable:@"shopCarGoods" dicOrModel:[GoodsActiveItem class] whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
         if (count.count==0) {
             model.goodsSelect = YES;
-            [self.db jq_insertTable:@"shopCarGoods" dicOrModel:model];
-            self.toolView.goodsNum =[NSString stringWithFormat:@"%d",[self.db jq_tableItemCount:@"shopCarGoods"]];
+            [weakSelf.db jq_insertTable:@"shopCarGoods" dicOrModel:model];
+            weakSelf.toolView.goodsNum =[NSString stringWithFormat:@"%d",[weakSelf.db jq_tableItemCount:@"shopCarGoods"]];
 
         }else{
-            [self.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
+            [weakSelf.db jq_updateTable:@"shopCarGoods" dicOrModel:model whereFormat:[NSString stringWithFormat:@"where orderID = '%@'",model.orderID]];
         }
     };
     return cell;
@@ -162,7 +170,9 @@ static NSString * const GoodsActiveCellID = @"GoodsActiveCell";
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)dealloc{
+    LLog(@"销毁");
+}
 /*
 #pragma mark - Navigation
 

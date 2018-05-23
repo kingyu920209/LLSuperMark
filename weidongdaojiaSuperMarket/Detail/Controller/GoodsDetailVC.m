@@ -57,6 +57,7 @@ static NSString * const GoodsDetailWebCellID = @"GoodsDetailWebCellID";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    kWeakSelf(weakSelf);
     self.webHeight= 300;
     self.db = [JQFMDB shareDatabase:@"shopCarGoods.sqlite"];
 
@@ -85,7 +86,7 @@ static NSString * const GoodsDetailWebCellID = @"GoodsDetailWebCellID";
         make.size.mas_equalTo(CGSizeMake(32, 32));
     }];
     button.rac_command = [[RACCommand alloc] initWithSignalBlock:^RACSignal * _Nonnull(id  _Nullable input) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [weakSelf.navigationController popViewControllerAnimated:YES];
         return [RACSignal empty];
     }];
     [self addShopCarToolView];
@@ -105,12 +106,14 @@ static NSString * const GoodsDetailWebCellID = @"GoodsDetailWebCellID";
     self.toolView.goodsNum =[NSString stringWithFormat:@"%d",[self.db jq_tableItemCount:@"shopCarGoods"]];
     self.toolView.frame = CGRectMake(0, KScreenHeight-51, KScreenWidth, 51);
     [self.view addSubview:self.toolView];
+    kWeakSelf(weakSelf);
+
     self.toolView.goShopBlock = ^{
         
         AppDelegate *delegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
         WDTabBarController *tab = (WDTabBarController *)delegate.window.rootViewController;
         tab.selectedIndex = 2;
-        [self.navigationController popToRootViewControllerAnimated:YES];
+        [weakSelf.navigationController popToRootViewControllerAnimated:YES];
         
     };
 
@@ -214,7 +217,9 @@ static NSString * const GoodsDetailWebCellID = @"GoodsDetailWebCellID";
 //
 //    
 //}
-
+-(void)dealloc{
+    LLog(@"销毁");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

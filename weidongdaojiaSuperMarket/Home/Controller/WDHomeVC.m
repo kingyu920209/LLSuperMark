@@ -20,6 +20,7 @@
 #import "WDGoodsActiveVC.h"
 #import "GoodsDetailVC.h"
 #import "GoodsActiveItem.h"
+#import "WDTsetVC.h"
 #define GoodsHomeSilderImagesArray @[@"http://gfs5.gomein.net.cn/T1obZ_BmLT1RCvBVdK.jpg",@"http://gfs9.gomein.net.cn/T1C3J_B5LT1RCvBVdK.jpg",@"http://gfs5.gomein.net.cn/T1CwYjBCCT1RCvBVdK.jpg",@"http://gfs7.gomein.net.cn/T1u8V_B4ET1RCvBVdK.jpg",@"http://gfs7.gomein.net.cn/T1zODgB5CT1RCvBVdK.jpg"]
 
 //NSString *const SHOWTOPTOOLVIEW = @"SHOWTOPTOOLVIEW";
@@ -114,15 +115,18 @@ static NSString *const WDOtherHeadViewID = @"WDOtherHeadView";
     [_collectionView reloadData];
     
     _topToolView = [[WDHomeTopToolView alloc] initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 64)];
+    
+    kWeakSelf(weakSelf);
 
     _topToolView.leftItemClickBlock = ^{
         NSLog(@"点击了首页扫一扫");
+        WDTsetVC * vc = [WDTsetVC new];
+        [self.navigationController pushViewController:vc animated:YES];
     };
     _topToolView.rightItemClickBlock = ^{
         NSLog(@"点击了首页分类");
        
     };
-    kWeakSelf(weakSelf);
     _topToolView.searchButtonClickBlock = ^{
         NSLog(@"点击了首页搜索");
         NSArray *hotSeaches = @[@"牛奶", @"面包", @"薯片",];

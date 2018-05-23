@@ -120,7 +120,7 @@ static NSString *const CategoryGoodsCellID = @"CategoryGoodsCell";
     [self.tableView selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:NO scrollPosition:UITableViewScrollPositionTop];
     
 
-    [self addNavigationBar];
+//    [self addNavigationBar];
     
     [self setToolView];
     self.topCollectionView.backgroundColor = [UIColor getColor:@"f1f2f6"];

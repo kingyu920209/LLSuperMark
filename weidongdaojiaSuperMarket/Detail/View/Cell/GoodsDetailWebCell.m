@@ -81,7 +81,11 @@
     [super awakeFromNib];
     // Initialization code
 }
-
+-(void)dealloc{
+    LLog(@"web销毁");
+    self.webView.delegate = nil;
+    self.webView = nil;
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 

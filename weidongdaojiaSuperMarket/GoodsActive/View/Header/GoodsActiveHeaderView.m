@@ -37,7 +37,7 @@ static NSString * const headerViewID  = @"GoodsActiveHeaderView";
 }
 - (void)customUI
 {
-    self.backgroundColor = [UIColor getColor:@"fafafa"];
+//    self.backgroundColor = [UIColor getColor:@"fafafa"];
     self.banerImageView = [[UIImageView alloc]init];
     [self addSubview:self.banerImageView];
     
@@ -80,6 +80,9 @@ static NSString * const headerViewID  = @"GoodsActiveHeaderView";
         [self.imageView sd_setImageWithURL:[NSURL URLWithString:imageURL]placeholderImage:[UIImage imageNamed:@"default_49_11"]];
         
     }else{
+//        imageWithContentsOfFile
+//      self.imageView.image=  [UIImage imageWithContentsOfFile: [[NSBundle mainBundle]pathForResource:imageURL ofType:@"png"]];
+
         self.imageView.image = [UIImage imageNamed:imageURL];
         
     }

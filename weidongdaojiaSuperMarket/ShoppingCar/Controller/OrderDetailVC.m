@@ -181,6 +181,9 @@ static NSString * const OrderDetailImgCellID = @"OrderDetailImgCellID";
         }
     }
 }
+-(void)dealloc{
+    LLog(@"销毁");
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

@@ -30,6 +30,7 @@
 		0C1531022022ED24000DB048 /* AddressPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C1531002022ED24000DB048 /* AddressPickerView.m */; };
 		0C1531032022ED24000DB048 /* Addresscity.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0C1531012022ED24000DB048 /* Addresscity.plist */; };
 		0C153106202954FA000DB048 /* UIControl+ButtonCon.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C153105202954FA000DB048 /* UIControl+ButtonCon.m */; };
+		0C7D81F22096345A003D5511 /* WDTsetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 0C7D81F12096345A003D5511 /* WDTsetVC.m */; };
 		0CC597DB200359AD003F6F46 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC597DA200359AD003F6F46 /* AppDelegate.m */; };
 		0CC597DE200359AD003F6F46 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0CC597DD200359AD003F6F46 /* ViewController.m */; };
 		0CC597E1200359AD003F6F46 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0CC597DF200359AD003F6F46 /* Main.storyboard */; };
@@ -156,6 +157,8 @@
 		0C1531012022ED24000DB048 /* Addresscity.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Addresscity.plist; sourceTree = "<group>"; };
 		0C153104202954FA000DB048 /* UIControl+ButtonCon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIControl+ButtonCon.h"; sourceTree = "<group>"; };
 		0C153105202954FA000DB048 /* UIControl+ButtonCon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIControl+ButtonCon.m"; sourceTree = "<group>"; };
+		0C7D81F02096345A003D5511 /* WDTsetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDTsetVC.h; sourceTree = "<group>"; };
+		0C7D81F12096345A003D5511 /* WDTsetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDTsetVC.m; sourceTree = "<group>"; };
 		0CC597D6200359AD003F6F46 /* weidongdaojiaSuperMarket.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = weidongdaojiaSuperMarket.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0CC597D9200359AD003F6F46 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		0CC597DA200359AD003F6F46 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -253,7 +256,7 @@
 		0CF0CC59200DE54A00BB1DF4 /* WDGoodsActiveVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WDGoodsActiveVC.h; sourceTree = "<group>"; };
 		0CF0CC5A200DE54A00BB1DF4 /* WDGoodsActiveVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WDGoodsActiveVC.m; sourceTree = "<group>"; };
 		0CF0CC5E200DEAF500BB1DF4 /* GoodsActiveHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsActiveHeaderView.h; sourceTree = "<group>"; };
-		0CF0CC5F200DEAF500BB1DF4 /* GoodsActiveHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsActiveHeaderView.m; sourceTree = "<group>"; };
+		0CF0CC5F200DEAF500BB1DF4 /* GoodsActiveHeaderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsActiveHeaderView.m; sourceTree = "<group>"; wrapsLines = 1; };
 		0CF0CC62200DF06300BB1DF4 /* GoodsActiveCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GoodsActiveCell.h; sourceTree = "<group>"; };
 		0CF0CC63200DF06300BB1DF4 /* GoodsActiveCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GoodsActiveCell.m; sourceTree = "<group>"; };
 		0CF0CC65200DF80E00BB1DF4 /* GoodsActive.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = GoodsActive.plist; sourceTree = "<group>"; };
@@ -604,6 +607,8 @@
 			children = (
 				0CC5981920035C8F003F6F46 /* WDHomeVC.h */,
 				0CC5981A20035C8F003F6F46 /* WDHomeVC.m */,
+				0C7D81F02096345A003D5511 /* WDTsetVC.h */,
+				0C7D81F12096345A003D5511 /* WDTsetVC.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1249,6 +1254,7 @@
 				0C1530BB20201328000DB048 /* OrderDetailAddressCell.m in Sources */,
 				0CC598562004A326003F6F46 /* WDGoodsGridCell.m in Sources */,
 				0CC59847200451E6003F6F46 /* WDRootVC.m in Sources */,
+				0C7D81F22096345A003D5511 /* WDTsetVC.m in Sources */,
 				0CC5983D2003678A003F6F46 /* WDMyCenterTabBarItem.m in Sources */,
 				0C1530D2202170BA000DB048 /* OrderListCell.m in Sources */,
 				0CF0CC7B20108C1C00BB1DF4 /* LeftCategoryItem.m in Sources */,
@@ -1419,7 +1425,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F4DH3KVRGU;
+				DEVELOPMENT_TEAM = N4XNK98UB3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${SRCROOT}/weidongdaojiaSuperMarket/Expand/Pch/PrefixHeader.pch";
 				INFOPLIST_FILE = weidongdaojiaSuperMarket/Info.plist;
@@ -1437,7 +1443,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F4DH3KVRGU;
+				DEVELOPMENT_TEAM = N4XNK98UB3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "${SRCROOT}/weidongdaojiaSuperMarket/Expand/Pch/PrefixHeader.pch";
 				INFOPLIST_FILE = weidongdaojiaSuperMarket/Info.plist;

@@ -37,18 +37,22 @@
     self.num = 0;
     self.titleImg = [[UIImageView alloc] init];
     [self.contentView addSubview:self.titleImg];
+    self.backgroundColor = [UIColor whiteColor];
     
     self.titleLabel = [[UILabel alloc]init];
+    self.titleLabel.backgroundColor = self.backgroundColor;
     self.titleLabel.font = [UIFont systemFontOfSize:14];
     self.titleLabel.textColor = [UIColor getColor:@"333333"];
     [self.contentView addSubview:self.titleLabel];
     
     self.guigeLabel = [[UILabel alloc] init];
+    self.guigeLabel.backgroundColor = self.backgroundColor;
     self.guigeLabel.font = [UIFont systemFontOfSize:13];
     self.guigeLabel.textColor = [UIColor getColor:@"777777"];
     [self.contentView addSubview:self.guigeLabel];
     
     self.priceLabel = [[UILabel alloc] init];
+    self.priceLabel.backgroundColor = self.backgroundColor;
     self.priceLabel.font = [UIFont boldSystemFontOfSize:18];
     self.priceLabel.textColor = [UIColor getColor:@"333333"];
     [self.contentView addSubview:self.priceLabel];
